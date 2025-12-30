@@ -1,21 +1,19 @@
-# Random Password Generator (Tkinter)
+## Objective
+To build a random password generator using Python and Tkinter.
 
-A GUI-based random password generator built using Python and Tkinter.
+## Steps Performed
+- Designed a GUI using Tkinter
+- Took user inputs for password length and character types
+- Implemented random password generation logic
+- Added password strength indicator and reset option
+- Integrated clipboard copy feature
 
-## Features
-- Custom password length
-- Letters, numbers, and symbols selection
-- Password strength indicator
-- Reset option
-- Clipboard copy feature
-
-## How to Run
-1. Install Python (3.x)
-2. Download or clone this repository
-3. Open the folder in VS Code
-4. Run:
-   python password_generator.py
-
-## Technologies Used
+## Tools Used
 - Python
 - Tkinter
+- VS Code
+- GitHub
+
+## Outcome
+A user-friendly GUI application that generates secure random passwords based on user preferences.
+
