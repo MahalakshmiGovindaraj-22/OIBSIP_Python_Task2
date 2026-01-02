@@ -3,8 +3,6 @@ from tkinter import messagebox
 import random
 import string
 
-# ---------------- FUNCTIONS ---------------- #
-
 def generate_password():
     try:
         length = int(length_entry.get())
@@ -27,8 +25,6 @@ def generate_password():
             return
 
         password = ""
-
-        # Security rule: ensure at least one of each selected type
         if letters_var.get():
             password += random.choice(string.ascii_letters)
         if numbers_var.get():
@@ -38,14 +34,10 @@ def generate_password():
 
         remaining = length - len(password)
         password += "".join(random.choice(chars) for _ in range(remaining))
-
-        # Shuffle password
         password = "".join(random.sample(password, len(password)))
 
         result_entry.delete(0, tk.END)
         result_entry.insert(0, password)
-
-        # -------- Password Strength -------- #
         if length < 6:
             strength_label.config(text="Strength: Weak", fg="red")
         elif length < 10:
@@ -75,9 +67,6 @@ def reset_fields():
     numbers_var.set(False)
     symbols_var.set(False)
 
-
-# ---------------- GUI ---------------- #
-
 root = tk.Tk()
 root.title("Random Password Generator")
 root.geometry("420x450")
@@ -85,34 +74,27 @@ root.geometry("420x450")
 tk.Label(root, text="Random Password Generator",
          font=("Arial", 16, "bold")).pack(pady=10)
 
-# Password length
 tk.Label(root, text="Password Length").pack()
 length_entry = tk.Entry(root)
 length_entry.pack(pady=5)
 
-# Checkbox variables
 letters_var = tk.BooleanVar()
 numbers_var = tk.BooleanVar()
 symbols_var = tk.BooleanVar()
 
-# Checkboxes
 tk.Checkbutton(root, text="Include Letters", variable=letters_var).pack()
 tk.Checkbutton(root, text="Include Numbers", variable=numbers_var).pack()
 tk.Checkbutton(root, text="Include Symbols", variable=symbols_var).pack()
 
-# Buttons
 tk.Button(root, text="Generate Password",
           command=generate_password).pack(pady=10)
 
-# Result
 result_entry = tk.Entry(root, font=("Arial", 12), justify="center")
 result_entry.pack(pady=10, ipadx=10)
 
-# Strength label
 strength_label = tk.Label(root, text="", font=("Arial", 11, "bold"))
 strength_label.pack(pady=5)
 
-# Copy & Reset buttons
 tk.Button(root, text="Copy Password",
           command=copy_password).pack(pady=5)
 
